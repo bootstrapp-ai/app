@@ -15,7 +15,26 @@
 	  fileUrl = data.file;
 	  loading = false;
 	}
-  
+	let loadingMessages = [
+		'Setting up your project...',
+		'Creating some content...',
+		'Choosing the perfect color scheme...',
+		'Almost there...',
+		'Getting ready to launch...'
+	];
+	let currentLoadingMessageIndex = 0;
+
+	// Create an interval that changes the loading message every few seconds
+	onMount(() => {
+		const intervalId = setInterval(() => {
+			currentLoadingMessageIndex = (currentLoadingMessageIndex + 1) % loadingMessages.length;
+		}, 2000); // change message every 2 seconds
+
+		return () => {
+			clearInterval(intervalId); // clear interval on unmount
+		}
+	});
+
 	// Redirect when fileUrl changes.
 	$: if (fileUrl) {
 	  window.location.href = fileUrl;
@@ -44,9 +63,10 @@
 		</form>
 	  </div>
 	{:else}
-	  <div class="loader-container">
-		<div class="loader"></div>
-	  </div>
+	<div class="loader-container">
+	<div class="loader"></div>
+	<div class="loading-message">{loadingMessages[currentLoadingMessageIndex]}</div>
+	</div>
 	{/if}
   </div>
   
@@ -65,6 +85,12 @@
 	  height: 120px;
 	  animation: spin 2s linear infinite;
 	}
+
+	.loading-message {
+		font-size: 1.2em;
+		margin-top: 20px;
+		text-align: center;
+  	}
 	@keyframes spin {
 	  0% { transform: rotate(0deg); }
 	  100% { transform: rotate(360deg); }
