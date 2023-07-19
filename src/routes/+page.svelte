@@ -35,7 +35,7 @@
 			  </div>
 			</div>
 			<div class="px-4 m-1 py-2 bg-white rounded-b-lg dark:bg-gray-800">
-			  <textarea id="editor" rows="8" bind:value={message} class="block px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write about your project" required></textarea>
+			  <textarea id="editor" rows="8" bind:value={message} class="w-full h-full block px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write about your project" required></textarea>
 			</div>
 		  </div>
 		  <div class="flex justify-center space-x-2">
