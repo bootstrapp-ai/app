@@ -19,8 +19,8 @@
 		'Setting up your project...',
 		'Creating some content...',
 		'Choosing the perfect color scheme...',
+		'Getting ready to launch...',
 		'Almost there...',
-		'Getting ready to launch...'
 	];
 	let currentLoadingMessageIndex = 0;
 
@@ -63,9 +63,9 @@
 		</form>
 	  </div>
 	{:else}
+	<h2 class="h3 loading-message m-20">{loadingMessages[currentLoadingMessageIndex]}</h2>
 	<div class="loader-container">
-	<div class="loader"></div>
-	<div class="loading-message">{loadingMessages[currentLoadingMessageIndex]}</div>
+	<div class="loader"></div>	
 	</div>
 	{/if}
   </div>
