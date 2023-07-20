@@ -1,0 +1,107 @@
+type User 
+  @model 
+  @auth(rules: [
+    { allow: owner, operations: [read, update, delete] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ]) {
+  id: ID!
+  email: String!
+  plan: Plan @hasOne
+  team: Team @hasOne
+  projects: [Project] @hasMany(indexName: "byUser", fields: ["id"])
+}
+
+type Plan 
+  @model 
+  @auth(rules: [
+    { allow: owner, operations: [read, update, delete] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ]) {
+  id: ID!
+  type: PlanType!
+  users: [User] @hasMany(indexName: "byPlan", fields: ["id"])
+}
+
+enum PlanType {
+  FREE
+  PERSONAL
+  BUSINESS
+  STARTUP
+}
+
+type Team 
+  @model 
+  @auth(rules: [
+    { allow: owner, operations: [read, update, delete] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ]) {
+  id: ID!
+  members: [TeamMember] @hasMany(indexName: "byTeam", fields: ["id"])
+}
+
+type TeamMember 
+  @model 
+  @auth(rules: [
+    { allow: owner, operations: [read, update, delete] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ]) {
+  id: ID!
+  role: Role!
+  team: Team @belongsTo(fields: ["id"])
+}
+
+enum Role {
+  INTERN
+  JUNIOR
+  SENIOR
+  CO_FOUNDER
+}
+
+type Project 
+  @model 
+  @auth(rules: [
+    { allow: owner, operations: [read, update, delete] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ]) {
+  id: ID!
+  user: User @belongsTo(fields: ["id"])
+  pages: [Page] @hasMany(indexName: "byProject", fields: ["id"])
+  prompt: Prompt @hasOne
+}
+
+type Page 
+  @model 
+  @auth(rules: [
+    { allow: owner, operations: [read, update, delete] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ]) {
+  id: ID!
+  project: Project @belongsTo(fields: ["id"])
+  prompt: Prompt @hasOne
+}
+
+type Prompt 
+  @model 
+  @auth(rules: [
+    { allow: owner, operations: [read, update, delete] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ]) {
+  id: ID!
+  content: String!
+  page: Page @belongsTo(fields: ["id"])
+  project: Project @belongsTo(fields: ["id"])
+  versions: [Version] @hasMany(indexName: "byPrompt", fields: ["id"])
+}
+
+type Version 
+  @model 
+  @auth(rules: [
+    { allow: owner, operations: [read, update, delete] },
+    { allow: groups, groups: ["Admin"], operations: [read, update, delete] }
+  ]) {
+  id: ID!
+  prompt: Prompt @belongsTo(fields: ["id"])
+  versionNumber: Int!
+  content: AWSJSON!
+  timestamp: AWSDateTime!
+}
