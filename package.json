@@ -40,6 +40,10 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-static": "^2.0.2"
+		"@sveltejs/adapter-static": "^2.0.2",
+		"aws-amplify": "^5.3.4"
+	},
+	"volta": {
+		"node": "18.17.0"
 	}
 }

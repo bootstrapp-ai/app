@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "bootstrappapp471f4d07_identitypool_471f4d07",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "bootst471f4d07",
+    "userPoolName": "bootstrappapp471f4d07_userpool_471f4d07",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email",
+      "name"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email",
+      "name"
+    ],
+    "userpoolClientReadAttributes": [
+      "email",
+      "name",
+      "email_verified"
+    ],
+    "userpoolClientLambdaRole": "bootst471f4d07_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": true,
+    "sharedId": "471f4d07",
+    "resourceName": "bootstrappapp471f4d07471f4d07",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "manual",
+    "thirdPartyAuth": true,
+    "authProviders": [
+      "accounts.google.com"
+    ],
+    "userPoolGroups": true,
+    "adminQueries": true,
+    "triggers": {
+      "PostConfirmation": [
+        "custom"
+      ]
+    },
+    "hostedUI": true,
+    "hostedUIDomainName": "bootstrappapp471f4d07-471f4d07",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"email\",\"openid\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://bootstrapp.ai/auth/signin/\"],\"LogoutURLs\":[\"https://bootstrapp.ai/auth/signout/\"]}",
+    "userPoolGroupList": [
+      "admin",
+      "publishers",
+      "viewers"
+    ],
+    "adminQueryGroup": "admin",
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}

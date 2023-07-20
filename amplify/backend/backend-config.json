@@ -1,9 +1,42 @@
 {
-  "api": {},
+  "api": {
+    "AdminQueries": {
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bootstrappapp471f4d07471f4d07"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "AdminQueries3b2d209f"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
-    "appdff0987d": {
+    "bootstrappapp471f4d07471f4d07": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "bootstrappapp471f4d07471f4d07PostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -14,18 +47,98 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "NAME"
         ],
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
+        "socialProviders": [
+          "GOOGLE"
         ],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bootstrappapp471f4d07471f4d07"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
+    }
+  },
+  "function": {
+    "AdminQueries3b2d209f": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "bootstrappapp471f4d07471f4d07"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "bootstrappapp471f4d07471f4d07PostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_bootstrappapp471f4d07471f4d07_googleClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "bootstrappapp471f4d07471f4d07"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries3b2d209f_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries3b2d209f"
+        }
+      ]
+    },
+    "AMPLIFY_function_AdminQueries3b2d209f_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AdminQueries3b2d209f"
+        }
+      ]
+    },
+    "AMPLIFY_function_bootstrappapp471f4d07471f4d07PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bootstrappapp471f4d07471f4d07PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_bootstrappapp471f4d07471f4d07PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "bootstrappapp471f4d07471f4d07PostConfirmation"
+        }
+      ]
     }
   }
 }

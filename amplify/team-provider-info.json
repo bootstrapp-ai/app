@@ -1,19 +1,36 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-app-dev-221128-authRole",
-      "UnauthRoleArn": "arn:aws:iam::903888363811:role/amplify-app-dev-221128-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::903888363811:role/amplify-app-dev-221128-authRole",
+      "AuthRoleName": "amplify-bootstrappapp-dev-102755-authRole",
+      "UnauthRoleArn": "arn:aws:iam::903888363811:role/amplify-bootstrappapp-dev-102755-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::903888363811:role/amplify-bootstrappapp-dev-102755-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-app-dev-221128-deployment",
-      "UnauthRoleName": "amplify-app-dev-221128-unauthRole",
-      "StackName": "amplify-app-dev-221128",
-      "StackId": "arn:aws:cloudformation:us-east-1:903888363811:stack/amplify-app-dev-221128/5c88eac0-269a-11ee-b280-0eefd66a8eb5",
-      "AmplifyAppId": "d18v7jcsekcmez"
+      "DeploymentBucketName": "amplify-bootstrappapp-dev-102755-deployment",
+      "UnauthRoleName": "amplify-bootstrappapp-dev-102755-unauthRole",
+      "StackName": "amplify-bootstrappapp-dev-102755",
+      "StackId": "arn:aws:cloudformation:us-east-1:903888363811:stack/amplify-bootstrappapp-dev-102755/3e364a60-2701-11ee-a16c-0a09b2839c61",
+      "AmplifyAppId": "d10fqgq45643fm",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-bootstrappapp-dev-102755-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
-        "appdff0987d": {}
+        "bootstrappapp471f4d07471f4d07": {
+          "googleClientId": "435286565410-02ba4kd0ev7mp77t3rsal7lshqklpm5r.apps.googleusercontent.com"
+        },
+        "userPoolGroups": {}
+      },
+      "function": {
+        "bootstrappapp471f4d07471f4d07PostConfirmation": {
+          "deploymentBucketName": "amplify-bootstrappapp-dev-102755-deployment",
+          "s3Key": "amplify-builds/bootstrappapp471f4d07471f4d07PostConfirmation-59456e7173415847497a-build.zip"
+        },
+        "AdminQueries3b2d209f": {
+          "deploymentBucketName": "amplify-bootstrappapp-dev-102755-deployment",
+          "s3Key": "amplify-builds/AdminQueries3b2d209f-65395438375941787076-build.zip"
+        }
+      },
+      "api": {
+        "AdminQueries": {}
       }
     }
   }
